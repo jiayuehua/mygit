@@ -1,0 +1,45 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	editor = vim
+	excludesfile = /home/jiayuehua/.gitignore
+  packedGitLimit = 512m
+  packedGitWindowSize = 512m
+[user]
+	name = jiayuehua
+	email = gracedancer@163.com
+[credential]
+	helper = cache --timeout 3600
+[diff]
+	tool = diff
+[difftool "vimdiff"]
+    tool = vimdiff
+;[difftool "kdiff3"]
+    ;tool = kdiff3
+;[merge]
+	;tool = kdiff3
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+;[mergetool "kdiff3"]
+	;path = /usr/bin/kdiff3
+[core]
+	editor = vim
+	excludesfile = /home/jiayuehua/.gitignore
+[pack]
+    threads = 1
+    deltaCacheSize = 512m
+    packSizeLimit = 512m
+    windowMemory = 1024m
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = false
+[format]
+  pretty = format:%C(auto) %C(yellow)%h%Creset %C(green)(%ad)%Creset   %C(yellow)%an%Creset  %s
+  ;pretty = format:%h %ad %an %s
+[log]
+	date = local

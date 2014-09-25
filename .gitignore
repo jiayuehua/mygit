@@ -1,0 +1,13 @@
+auth
+*.a
+*.d
+*.o
+*.so
+*.so.[0-9]
+*.txt
+*.swp
+*.gz
+*.zip
+*.vcproj
+*.vcproj.*
+
