@@ -4,38 +4,37 @@
 	bare = false
 	logallrefupdates = true
 	editor = vim
-	excludesfile = /home/jiayuehua/.gitignore
+	excludesfile = ~/.gitignore
   packedGitLimit = 512m
   packedGitWindowSize = 512m
+	autocrlf = true
+	;editor = \"C:/Program Files/GitExtensions/GitExtensions.exe\" fileeditor
 [user]
 	name = jiayuehua
 	email = gracedancer@163.com
-[credential]
-	helper = cache --timeout 3600
+;[merge]
+	;tool = kdiff3
+	tool = vimdiff
+;[mergetool "kdiff3"]
+	;path = /usr/bin/kdiff3
 [diff]
 	tool = diff
 [difftool "vimdiff"]
     tool = vimdiff
 ;[difftool "kdiff3"]
     ;tool = kdiff3
-;[merge]
-	;tool = kdiff3
 [color]
 	diff = auto
 	status = auto
 	branch = auto
-;[mergetool "kdiff3"]
-	;path = /usr/bin/kdiff3
-[core]
-	editor = vim
-	excludesfile = /home/jiayuehua/.gitignore
+[credential]
+	;helper = !\\\"C:/Program Files/GitExtensions/GitCredentialWinStore/git-credential-winstore.exe\\\"
+	;helper = cache --timeout 3600
 [pack]
     threads = 1
     deltaCacheSize = 512m
     packSizeLimit = 512m
     windowMemory = 1024m
-[merge]
-	tool = vimdiff
 [mergetool]
 	prompt = false
 [format]
