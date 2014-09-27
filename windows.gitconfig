@@ -5,8 +5,8 @@
 	logallrefupdates = true
 	editor = vim
 	excludesfile = ~/.gitignore
-  packedGitLimit = 512m
-  packedGitWindowSize = 512m
+;  packedGitLimit = 512m
+;  packedGitWindowSize = 512m
 	autocrlf = true
 	editor = \"C:/Program Files/GitExtensions/GitExtensions.exe\" fileeditor
 [user]
