@@ -8,7 +8,9 @@
 	excludesfile = ~/.gitignore
   ;packedGitLimit = 512m
   ;packedGitWindowSize = 512m
-	autocrlf = true
+  ;autocrlf = true  ;;windows
+	autocrlf = input  ;;linux
+	safecrlf = warn
 [user]
 	name = jiayuehua
 	email = gracedancer@163.com
@@ -31,7 +33,7 @@
 	branch = auto
 ;[credential]
 	;helper = !\\\"C:/Program Files/GitExtensions/GitCredentialWinStore/git-credential-winstore.exe\\\"
-	;helper = cache --timeout 3600
+	helper = cache --timeout 3600
 ;[pack]
     ;threads = 1
     ;deltaCacheSize = 512m
