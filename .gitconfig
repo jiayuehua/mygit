@@ -46,3 +46,9 @@
 	date = local
 [clean]
 	requireForce = false
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
