@@ -1,4 +1,5 @@
-git checkout origin/some_branch
+# edit me.config, line 22#optional, assume branch is XiaoQiang-0.6, assume branch is XiaoQiang-0.6.1
+git checkout origin/XiaoQiang-0.6.1
 git cherry-pick some_commitid
 git mergetool                # optional
 git cherry-pick --continue   # optional
