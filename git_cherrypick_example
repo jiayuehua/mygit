@@ -1,0 +1,5 @@
+git checkout origin/some_branch
+git cherry-pick some_commitid
+git mergetool                # optional
+git cherry-pick --continue   # optional
+git push ort_review
