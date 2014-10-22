@@ -1,4 +1,21 @@
-git checkout origin/some_branch
+1 # Edit me.config, line 22#optional, assume branch is XiaoQiang-0.6, assume branch is XiaoQiang-0.6.1, change push review "remote destination"
+
+2 
+#*****************  change .git/config way  **** WAY A ***
+
+## If you NOT have one "remote",  you can also add below lines to .git/config, after that , you can use "git checkout XiaoQiang-0.6.1"
+    [branch "XiaoQiang-0.6.1"]
+       remote = origin
+       merge = refs/heads/XiaoQiang-0.6.1
+## Else if you have only one "remote ", 
+#
+# git branch   -t experimental origin/experimental
+# git checkout -t experimental origin/experimental
+
+#***************** not change .git/config way ** WAY B *****
+git checkout origin/XiaoQiang-0.6.1
+
+3 
 git cherry-pick some_commitid
 git mergetool                # optional
 git cherry-pick --continue   # optional
