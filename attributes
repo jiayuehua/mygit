@@ -1,0 +1,6 @@
+*.c  filter=tabspace
+*.cc  filter=tabspace
+*.h  filter=tabspace
+*.hpp  filter=tabspace
+*.cpp  filter=tabspace
+*.asm  filter=tabspace

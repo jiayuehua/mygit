@@ -17,3 +17,7 @@ git push -u origin master
 3 git roll back commit , work for both local and remote. For remote, that means you can push an commit which content is same as THE OLDER ONE. 
 git format-patch -k --stdout HEAD~..HEAD  >>a.patch 
 git apply -R a.patch
+
+4 (optional) git attribute
+cp attributes .git/info/
+modify '.git/config' like 'config', add  "tabspace" section
