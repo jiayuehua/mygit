@@ -16,7 +16,7 @@
   ;whitespace = space-before-tab
 [user]
 	name = jiayuehua
-	email = jiayuehua@jd.com
+	email = jiayuehua@gmail.com
 [merge]
 	tool = kdiff3
   ;tool = vimdiff
