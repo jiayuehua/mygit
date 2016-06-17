@@ -21,3 +21,8 @@ git apply -R a.patch
 4 (optional) git attribute
 cp attributes .git/info/
 modify '.git/config' like 'config', add  "tabspace" section
+
+5 (optional) set upstream
+
+git branch --set-upstream-to=origin/<branch> master
+
