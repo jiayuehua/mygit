@@ -9,38 +9,43 @@
   ;packedGitLimit = 512m
   ;packedGitWindowSize = 512m
   ;autocrlf = true  ;;windows
-	autocrlf = input  ;;linux
-	safecrlf = warn
+  autocrlf = input  ;;linux
+  safecrlf = warn
+	;whitespace = trailing-space,space-before-tab
+  attributesfile = /home/rob/.gitattributes
+  ;whitespace = space-before-tab
 [user]
 	name = jiayuehua
-	email = gracedancer@163.com
+	email = jiayuehua@le.com
 [merge]
-	;tool = kdiff3
-	tool = vimdiff
+	tool = kdiff3
+; tool = vimdiff
 ;[mergetool "kdiff3"]
 	;path = /usr/bin/kdiff3
 [mergetool]
 	prompt = false
 [diff]
-	tool = diff
-[difftool "vimdiff"]
-    tool = vimdiff
+  ;tool = kdiff3 
+  tool = vimdiff
+;[difftool "vimdiff"]
+    ;tool = vimdiff
 ;[difftool "kdiff3"]
     ;tool = kdiff3
 [color]
 	diff = auto
 	status = auto
 	branch = auto
-;[credential]
+[credential]
 	;helper = !\\\"C:/Program Files/GitExtensions/GitCredentialWinStore/git-credential-winstore.exe\\\"
-	helper = cache --timeout 3600
+  ;helper = cache --timeout 3600 
+	helper = store
 ;[pack]
     ;threads = 1
     ;deltaCacheSize = 512m
     ;packSizeLimit = 512m
     ;windowMemory = 1024m
 [format]
-  pretty = format:%C(auto) %C(yellow)%h%Creset %C(green)(%ad)%Creset   %C(yellow)%an%Creset  %s
+  pretty = format:%C(auto) %C(yellow)%h%Creset %C(green)(%ad)%Creset %C(yellow)%an%Creset  %s
   ;pretty = format:%h %ad %an %s
 [log]
 	date = local
@@ -52,3 +57,58 @@
 	ci = commit
 	st = status
 	unstage = reset HEAD --
+
+# Logic:
+#
+# The 'git stash save' fails if the tree is clean (instead of
+# creating an empty stash :P). So, we only 'stash' and 'pop' if
+# the tree is dirty.
+#
+# The 'git rebase --whitespace=fix HEAD~' throws away the commit
+# if it's empty, and adding '--keep-empty' prevents the whitespace
+# from being fixed. So, we first check that the index is dirty.
+#
+# Also:
+# - '(! git diff-index --quiet --cached HEAD)' is true (zero) if
+#   the index is dirty
+# - '(! git diff-files --quiet .)' is true if the tree is dirty
+#
+# The 'rebase --whitespace=fix' trick is from here:
+# http://stackoverflow.com/a/19156679/470844
+fixws = !"\
+  if (! git diff-files --quiet .) && \
+     (! git diff-index --quiet --cached HEAD) ; then \
+    git commit -m FIXWS_SAVE_INDEX && \
+    git stash save FIXWS_SAVE_TREE && \
+    git rebase --whitespace=fix HEAD~ && \
+    git stash pop && \
+    git reset --soft HEAD~ ; \
+  elif (! git diff-index --quiet --cached HEAD) ; then \
+    git commit -m FIXWS_SAVE_INDEX && \
+    git rebase --whitespace=fix HEAD~ && \
+    git reset --soft HEAD~ ; \
+  fi"
+;[credential]
+[push]
+	default = simple
+;[apply]
+  ;whitespace = trailing-space,space-before-tab
+
+[filter "tabspace"]
+  ;clean =  jdclean.sh   ;; commit 
+  ;smudge =  smudge.sh   ;; checkout 
+	clean = clean.sh 
+	smudge = smudge.sh
+  required = true
+[filter "jd_eol_tabspace"]
+  ;clean =  jdclean.sh   ;; commit 
+  ;smudge =  smudge.sh   ;; checkout 
+  clean =  cat
+  smudge = cat
+  required = true
+[filter "eol_tabspace"]
+	clean = clean.sh 
+	smudge = smudge.sh
+	required = true
+[commit]
+	template = /home/rob/.git_commit_template 
