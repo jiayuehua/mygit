@@ -10,13 +10,14 @@
   ;packedGitWindowSize = 512m
   ;autocrlf = true  ;;windows
   autocrlf = input  ;;linux
-  safecrlf = warn
+  ;safecrlf = warn
 	;whitespace = trailing-space,space-before-tab
-  attributesfile = /home/rob/.gitattributes
+  ;attributesfile = /home/rob/.gitattributes
   ;whitespace = space-before-tab
+  gitproxy = /usr/local/bin/git-proxy-wrapper
 [user]
 	name = jiayuehua
-	email = jiayuehua@le.com
+	email = yuehwa@qq.com
 [merge]
 	tool = kdiff3
 ; tool = vimdiff
@@ -24,9 +25,12 @@
 	;path = /usr/bin/kdiff3
 [mergetool]
 	prompt = false
+        keepBackup = false
 [diff]
   ;tool = kdiff3 
   tool = vimdiff
+        prompt = false
+	noprefix = true
 ;[difftool "vimdiff"]
     ;tool = vimdiff
 ;[difftool "kdiff3"]
@@ -35,6 +39,7 @@
 	diff = auto
 	status = auto
 	branch = auto
+	ui = true
 [credential]
 	;helper = !\\\"C:/Program Files/GitExtensions/GitCredentialWinStore/git-credential-winstore.exe\\\"
   ;helper = cache --timeout 3600 
@@ -56,7 +61,11 @@
 	br = branch
 	ci = commit
 	st = status
-	unstage = reset HEAD --
+  unstage = reset HEAD --
+  promote = !$ZSH/bin/git-promote
+  wtf     = !$ZSH/bin/git-wtf
+  rank-contributors = !$ZSH/bin/git-rank-contributors
+  count   = !git shortlog -sn
 
 # Logic:
 #
@@ -88,7 +97,21 @@ fixws = !"\
     git rebase --whitespace=fix HEAD~ && \
     git reset --soft HEAD~ ; \
   fi"
+	info = remote -v show -n
+	vi = difftool -y -x vimdiff
+	mt = mergetool -y --tool vi
+	ls = log --name-status --pretty=format:'%C(yellow)%h%C(red)%d%Creset %s %C(blue)- %an, %ar%Creset'
+	hist = log --graph --pretty=format:'%C(yellow)%h%C(red)%d%Creset %s %C(blue)- %an, %ar%Creset'
+	tail = log --oneline --decorate --graph -10
+	loggrep = log --decorate --all-match -i --grep
+	pick = cherry-pick
+	ff = merge --ff-only
+	noff = merge --no-ff
+	tr = branch --set-upstream-to
+	url = "!git remote -v | perl -pe 's,(.*\\sgit@|.*://|\\.git .*),,g; s,:,/,' | sort -u"
 ;[credential]
+[help]
+        autocorrect = 1
 [push]
 	default = simple
 ;[apply]
@@ -111,4 +134,6 @@ fixws = !"\
 	smudge = smudge.sh
 	required = true
 [commit]
-	template = /home/rob/.git_commit_template 
+;	template = /home/rob/.le.template
+;[http]
+      ;proxy = http://10.100.54.72:8090

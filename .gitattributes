@@ -2,12 +2,25 @@
 * text=auto
 
 # Declare files that will always have LF line endings on checkout.
-*.h lf
-*.c lf
-*.hpp lf
-*.cpp lf
-*.hxx lf
-*.cxx lf
+*.c lf      filter=tabspace
+*.cc lf     filter=tabspace
+*.h lf      filter=tabspace
+*.hpp lf    filter=tabspace
+*.cpp lf    filter=tabspace
+*.hxx lf    filter=tabspace
+*.cxx lf    filter=tabspace
+*.asm lf    filter=tabspace
+
+*.conf lf    filter=tabspace
+
+#*.c    filter=tabspace
+#*.cc   filter=tabspace
+#*.h    filter=tabspace
+#*.hpp  filter=tabspace
+#*.cpp  filter=tabspace
+#*.hxx  filter=tabspace
+#*.cxx  filter=tabspace
+#*.asm  filter=tabspace
 
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.

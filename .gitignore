@@ -8,6 +8,6 @@ auth
 *.swp
 *.gz
 *.zip
-*.vcproj
-*.vcproj.*
+#*.vcproj
+#*.vcproj.*
 
